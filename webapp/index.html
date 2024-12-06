@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Information Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">   
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa; /* Light teal background */
+            color: #333;
+            margin: 20px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Home Button Styling */
+        .fixed-buttons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .btn {
+            background-color: #ff7043;
+            color: #ffffff;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+            transform: translateY(-3px);
+        }
+        
+
+        /* Form Container Styling */
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+            width: 500px; /* Increased width for better spacing */
+            border: 3px solid #00796b; /* Teal border */
+        }
+
+        h2 {
+            color: #009688;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 26px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        input[type="text"], input[type="date"], input[type="number"] {
+            width: 100%;
+            padding: 10px; /* Adjusted padding for uniform look */
+            border-radius: 10px;
+            border: 2px solid #80cbc4;
+            margin-top: 5px;
+            margin-bottom: 15px; /* Adjusted margins between input fields */
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        /* Button Styling */
+        input[type="submit"], button, input[type="button"] {
+            background-color: #ff7043;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 10px; /* Added margin for buttons */
+        }
+
+        input[type="submit"]:hover, button:hover, input[type="button"]:hover {
+            background-color: #e64a19;
+            transform: translateY(-3px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Extra shadow on hover */
+        }
+
+        button:focus, input[type="submit"]:focus, input[type="button"]:focus {
+            outline: none;
+        }
+
+        /* Button Styling for Reset and View All Books */
+        button:last-child, input[type="button"] {
+            background-color: #66bb6a;
+            margin-left: 10px;
+        }
+
+        button:last-child:hover, input[type="button"]:hover {
+            background-color: #43a047;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 600px) {
+            .form-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            button, input[type="submit"], input[type="button"] {
+                font-size: 16px;
+                padding: 12px 18px;
+            }
+        }
+    </style>
+    <script type="text/javascript">
+    function valid() {
+        var number = document.getElementById("accessno").value;
+        var bname = document.getElementById("bookname").value;
+        var aname = document.getElementById("authorname").value;
+        var edition = document.getElementById("edition").value;
+        var publisher = document.getElementById("publisher").value;
+        var date = document.getElementById("date").value;
+
+        if (number === "" || bname === "" || aname === "" || edition === "" || publisher === "" || date === "") {
+            alert("All fields must be filled");
+            return false;
+        }
+        return true;
+    }
+    </script>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2><i class="fas fa-book"></i>Book Information Form</h2>
+        <form action="Bookinformation" method="post" onsubmit="return valid()">
+            <label for="accessno">Access No:</label>
+            <input type="number" id="accessno" name="accessno" min="100" max="10000" required>
+
+            <label for="bookname">Book Name:</label>
+            <input type="text" id="bookname" name="bookname" required>
+
+            <label for="authorname">Author Name:</label>
+            <input type="text" id="authorname" name="authorname" required>
+
+            <label for="edition">Edition:</label>
+            <input type="text" id="edition" name="edition">
+
+            <label for="publisher">Publisher:</label>
+            <input type="text" id="publisher" name="publisher">
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="numberofbooks">Number of Books:</label>
+            <input type="number" id="numberofbooks" name="noofbooks" min="1" required>
+
+            <div style="display: flex; justify-content: space-between;">
+                <input type="submit" value="Submit">
+                <button type="reset" value="Reset">Reset</button>
+
+        <button class="btn" onclick="window.location.href='viewallbooks.jsp'">
+        <i class="fas fa-book"></i> VIEW ALL BOOKS
+        </button>
+
+           <!--       <input type="button" value="VIEW ALL BOOKS" onclick="window.location.href='allbooks.jsp'"> -->
+
+            </div>
+
+
+
+    <!-- Home button -->
+    <div class="fixed-buttons">
+        <button class="btn" onclick="window.location.href='home.jsp'">
+        <i class="fas fa-home"></i> HOME
+        </button>
+    </div>
+
+        </form>
+    </div>
+
+</body>
+</html>
